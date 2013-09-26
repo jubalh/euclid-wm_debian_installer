@@ -10,7 +10,7 @@ then
 fi
 
 #need packages
-aptitude install build-essentials gcc make subversion libx11-dev libxinerama-dev
+aptitude install build-essential gcc make subversion libx11-dev libxinerama-dev
 
 #get it
 svn checkout http://euclid-wm.googlecode.com/svn/trunk/ euclid-wm
@@ -19,6 +19,11 @@ svn checkout http://euclid-wm.googlecode.com/svn/trunk/ euclid-wm
 ./euclid-wm/make
 ./euclid-wm/make install
 
+#copy config files
+cp euclid-wm/euclidrc ~/.config/euclid-wm/euclidrc
+chmod u+x ~/.config/euclid-wm/euclidrc
+cp euclid-wm/euclid-wm.conf.sample ~/.config/euclid-wm/euclid-wm.conf
+
 #optionally write it in xinitrc so euclid is started when typing startx
 #not needed when you are using a login manager
-#echo "exec euclid-wm" >> ~/.xinitrc
+echo "exec euclid-wm" >> ~/.xinitrc
